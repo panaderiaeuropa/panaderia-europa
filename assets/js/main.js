@@ -88,7 +88,7 @@ const PANES = [
     nombre: 'Panquesito de vainilla',
     etiqueta: null,
     descripcion: 'Panquecito individual de vainilla, esponjado y con la cúpula dorada.',
-    precio: null,
+    precio: 17,
     peso: null,
     foto: 'pan-panquesito-vainilla.jpg'
   },
@@ -97,9 +97,27 @@ const PANES = [
     nombre: 'Panquesito de Nutella',
     etiqueta: null,
     descripcion: 'El mismo panquecito, con su centro de Nutella.',
-    precio: null,
+    precio: 17,
     peso: null,
     foto: 'pan-panquesito-nutella.jpg'
+  },
+  {
+    id: 'panquesito-oreo',
+    nombre: 'Panquesito de Oreo',
+    etiqueta: null,
+    descripcion: 'Con galleta Oreo en la masa y más galleta encima.',
+    precio: 17,
+    peso: null,
+    foto: null
+  },
+  {
+    id: 'panquesito-nuez',
+    nombre: 'Panquesito de nuez',
+    etiqueta: null,
+    descripcion: 'Panquecito con nuez picada, de los que aguantan bien el café.',
+    precio: 17,
+    peso: null,
+    foto: null
   },
   {
     id: 'beso',
