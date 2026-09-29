@@ -81,7 +81,7 @@ const PANES = [
     descripcion: 'Panquecito individual de vainilla, esponjado y con la cúpula dorada.',
     precio: null,
     peso: null,
-    foto: null
+    foto: 'pan-panquesito-vainilla.jpg'
   },
   {
     id: 'panquesito-nutella',
@@ -90,7 +90,7 @@ const PANES = [
     descripcion: 'El mismo panquecito, con su centro de Nutella.',
     precio: null,
     peso: null,
-    foto: null
+    foto: 'pan-panquesito-nutella.jpg'
   },
   {
     id: 'beso',
@@ -117,7 +117,7 @@ const PANES = [
     descripcion: 'Bañada en chocolate, del día. También la hacemos con chispas.',
     precio: null,
     peso: null,
-    foto: null
+    foto: 'pan-dona-chocolate.jpg'
   },
   {
     id: 'dona-azucar',
@@ -126,7 +126,7 @@ const PANES = [
     descripcion: 'Pasada por azúcar en cuanto sale del aceite, mientras está tibia.',
     precio: null,
     peso: null,
-    foto: null
+    foto: 'pan-dona-azucar.jpg'
   },
   {
     id: 'bolillo',
