@@ -106,7 +106,7 @@ const PANES = [
     nombre: 'Rebanada',
     etiqueta: null,
     descripcion: 'Rebanada de pan dulce que vuelve al horno hasta quedar crujiente.',
-    precio: null,
+    precio: 20,
     peso: null,
     foto: null
   },
@@ -115,7 +115,7 @@ const PANES = [
     nombre: 'Dona de chocolate',
     etiqueta: null,
     descripcion: 'Bañada en chocolate, del día. También la hacemos con chispas.',
-    precio: null,
+    precio: 20,
     peso: null,
     foto: 'pan-dona-chocolate.jpg'
   },
@@ -124,7 +124,7 @@ const PANES = [
     nombre: 'Dona de azúcar',
     etiqueta: null,
     descripcion: 'Pasada por azúcar en cuanto sale del aceite, mientras está tibia.',
-    precio: null,
+    precio: 20,
     peso: null,
     foto: 'pan-dona-azucar.jpg'
   },
