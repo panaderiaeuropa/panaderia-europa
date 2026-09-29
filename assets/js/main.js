@@ -124,7 +124,7 @@ const PANES = [
     nombre: 'Beso',
     etiqueta: null,
     descripcion: 'Dos mitades unidas con mermelada, pasadas por mantequilla y azúcar.',
-    precio: null,
+    precio: 20,
     peso: null,
     foto: null
   },
