@@ -39,6 +39,9 @@ python3 -m http.server 8000
   Un pan con varias versiones (la rosca por tamaño, el pan de muerto normal o relleno)
   lleva un array `variantes` en vez de `precio`; la tarjeta muestra todas y el
   formulario las ofrece como opciones sueltas, con el valor `idPan:idVariante`.
+  Un pan con `foto: null` o `precio: null` sale en el catálogo con un marcador
+  ("Foto en camino", "Precio por confirmar") y, si le falta el precio, no aparece en
+  el formulario de encargo. En cuanto se llenen los dos campos entra solo.
   Cada pan indica una `forma` que corresponde a una ilustración SVG del objeto `FORMAS`
   (`bolillo`, `telera`, `baguette`, `hogaza`, `molde`, `trenza`). Los precios están en
   pesos mexicanos (`Intl.NumberFormat('es-MX')`); cambia esa línea para otra moneda.

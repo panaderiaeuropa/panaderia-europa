@@ -75,6 +75,60 @@ const PANES = [
     foto: 'pan-oreja.jpg'
   },
   {
+    id: 'panquesito-vainilla',
+    nombre: 'Panquesito de vainilla',
+    etiqueta: null,
+    descripcion: 'Panquecito individual de vainilla, esponjado y con la cúpula dorada.',
+    precio: null,
+    peso: null,
+    foto: null
+  },
+  {
+    id: 'panquesito-nutella',
+    nombre: 'Panquesito de Nutella',
+    etiqueta: null,
+    descripcion: 'El mismo panquecito, con su centro de Nutella.',
+    precio: null,
+    peso: null,
+    foto: null
+  },
+  {
+    id: 'beso',
+    nombre: 'Beso',
+    etiqueta: null,
+    descripcion: 'Dos mitades unidas con mermelada, pasadas por mantequilla y azúcar.',
+    precio: null,
+    peso: null,
+    foto: null
+  },
+  {
+    id: 'rebanada',
+    nombre: 'Rebanada',
+    etiqueta: null,
+    descripcion: 'Rebanada de pan dulce que vuelve al horno hasta quedar crujiente.',
+    precio: null,
+    peso: null,
+    foto: null
+  },
+  {
+    id: 'dona-chocolate',
+    nombre: 'Dona de chocolate',
+    etiqueta: null,
+    descripcion: 'Bañada en chocolate, del día. También la hacemos con chispas.',
+    precio: null,
+    peso: null,
+    foto: null
+  },
+  {
+    id: 'dona-azucar',
+    nombre: 'Dona de azúcar',
+    etiqueta: null,
+    descripcion: 'Pasada por azúcar en cuanto sale del aceite, mientras está tibia.',
+    precio: null,
+    peso: null,
+    foto: null
+  },
+  {
     id: 'bolillo',
     nombre: 'Bolillo',
     etiqueta: 'Pan de sal',
@@ -112,13 +166,15 @@ const MXN = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' 
 // Un pan puede tener varias versiones (tamaño, relleno). El formulario las trata
 // como opciones independientes, con el valor "idDelPan:idDeLaVariante".
 function opcionesDePan(pan) {
-  return pan.variantes
-    ? pan.variantes.map((v) => ({
-        valor: `${pan.id}:${v.id}`,
-        etiqueta: `${pan.nombre} ${v.nombre.toLowerCase()}`,
-        precio: v.precio
-      }))
-    : [{ valor: pan.id, etiqueta: pan.nombre, precio: pan.precio }];
+  if (pan.variantes) {
+    return pan.variantes.map((v) => ({
+      valor: `${pan.id}:${v.id}`,
+      etiqueta: `${pan.nombre} ${v.nombre.toLowerCase()}`,
+      precio: v.precio
+    }));
+  }
+  // Sin precio todavía: no se ofrece en el formulario para no encargar a ciegas.
+  return pan.precio == null ? [] : [{ valor: pan.id, etiqueta: pan.nombre, precio: pan.precio }];
 }
 
 function buscarOpcion(valor) {
@@ -130,16 +186,21 @@ function buscarOpcion(valor) {
 }
 
 function precios(pan) {
-  return pan.variantes
-    ? pan.variantes.map((v) => `<span class="variante">${v.nombre} <b>${MXN.format(v.precio)}</b></span>`).join('')
+  if (pan.variantes) {
+    return pan.variantes.map((v) => `<span class="variante">${v.nombre} <b>${MXN.format(v.precio)}</b></span>`).join('');
+  }
+  return pan.precio == null
+    ? '<span class="price-pendiente">Precio por confirmar</span>'
     : `<span class="price">${MXN.format(pan.precio)}</span>`;
 }
 
 function tarjeta(pan) {
   return `
     <li class="bread-card" data-id="${pan.id}">
-      <img class="art" src="assets/img/${pan.foto}" alt="${pan.nombre} de Panadería El Europa"
-           width="700" height="525" loading="lazy" decoding="async">
+      ${pan.foto
+        ? `<img class="art" src="assets/img/${pan.foto}" alt="${pan.nombre} de Panadería El Europa"
+               width="700" height="525" loading="lazy" decoding="async">`
+        : '<div class="art art-vacia" aria-hidden="true"><span>Foto en camino</span></div>'}
       <span class="tag${pan.etiqueta ? '' : ' tag-empty'}" ${pan.etiqueta ? '' : 'aria-hidden="true"'}>${pan.etiqueta || '—'}</span>
       <h3>${pan.nombre}</h3>
       <p class="desc">${pan.descripcion}</p>
