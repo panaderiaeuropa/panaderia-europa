@@ -156,6 +156,15 @@ const PANES = [
     foto: 'pan-dona-azucar.jpg'
   },
   {
+    id: 'americano',
+    nombre: 'Pan americano',
+    etiqueta: null,
+    descripcion: 'Pan de caja rebanado, de miga suave. El de los sándwiches y el pan tostado.',
+    precio: null,
+    peso: null,
+    foto: null
+  },
+  {
     id: 'bolillo',
     nombre: 'Bolillo',
     etiqueta: 'Pan de sal',
