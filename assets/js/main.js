@@ -75,6 +75,15 @@ const PANES = [
     foto: 'pan-oreja.jpg'
   },
   {
+    id: 'almendras',
+    nombre: 'Almendras',
+    etiqueta: null,
+    descripcion: 'Hojaldre relleno de chantillí, cubierto de almendra y azúcar glas.',
+    precio: 25,
+    peso: null,
+    foto: 'pan-almendras.jpg'
+  },
+  {
     id: 'panquesito-vainilla',
     nombre: 'Panquesito de vainilla',
     etiqueta: null,
