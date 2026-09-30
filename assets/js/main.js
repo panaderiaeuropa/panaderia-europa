@@ -123,19 +123,19 @@ const PANES = [
     id: 'beso',
     nombre: 'Beso',
     etiqueta: null,
-    descripcion: 'Dos mitades unidas con mermelada, pasadas por mantequilla y azúcar.',
+    descripcion: 'Dos mitades unidas con mermelada y cubiertas de azúcar glas.',
     precio: 20,
     peso: null,
-    foto: null
+    foto: 'pan-beso.jpg'
   },
   {
     id: 'rebanada',
     nombre: 'Rebanada',
     etiqueta: null,
-    descripcion: 'Rebanada de pan dulce que vuelve al horno hasta quedar crujiente.',
+    descripcion: 'Rebanada de pan cubierta con crema de mantequilla y azúcar.',
     precio: 20,
     peso: null,
-    foto: null
+    foto: 'pan-rebanada.jpg'
   },
   {
     id: 'dona-chocolate',
