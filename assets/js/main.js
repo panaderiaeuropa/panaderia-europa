@@ -159,10 +159,10 @@ const PANES = [
     id: 'americano',
     nombre: 'Pan americano',
     etiqueta: null,
-    descripcion: 'Pan de caja rebanado, de miga suave. El de los sándwiches y el pan tostado.',
+    descripcion: 'Panquecito dorado en capacillo, con su galleta encima.',
     precio: null,
     peso: null,
-    foto: null
+    foto: 'pan-americano.jpg'
   },
   {
     id: 'bolillo',
