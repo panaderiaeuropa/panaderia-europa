@@ -160,7 +160,7 @@ const PANES = [
     nombre: 'Pan americano',
     etiqueta: null,
     descripcion: 'Panquecito dorado en capacillo, con su galleta encima.',
-    precio: null,
+    precio: 20,
     peso: null,
     foto: 'pan-americano.jpg'
   },
