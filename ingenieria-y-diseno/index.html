@@ -139,6 +139,12 @@ p { margin: 0; }
 .servicio li { font-size: .95rem; padding-left: 1.1rem; position: relative; }
 .servicio li::before { content: ""; position: absolute; left: 0; top: .72em; width: .5rem; height: 2px; background: var(--naranja); }
 
+/* Galería */
+.galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.5rem; }
+.galeria figure { margin: 0; min-width: 0; }
+.galeria img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid var(--linea); }
+.galeria figcaption { font: 400 .78rem/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--tenue); margin-top: .7rem; }
+
 /* Proceso */
 .proceso { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; counter-reset: paso; }
 .paso { counter-increment: paso; padding: 1.25rem 1.25rem 0 0; border-top: 2px solid var(--linea); position: relative; min-width: 0; }
@@ -239,6 +245,7 @@ textarea { min-height: 8rem; resize: vertical; }
     </button>
     <nav class="nav" id="nav">
       <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
       <a href="#proceso">Proceso</a>
       <a href="#taller">Equipo y software</a>
       <a href="#nosotros">Nosotros</a>
@@ -342,6 +349,25 @@ textarea { min-height: 8rem; resize: vertical; }
   </div>
 </section>
 
+<section class="seccion" id="trabajos" style="padding-top:0">
+  <div class="envoltura">
+    <div class="seccion-cabeza">
+      <p class="etiqueta">Nuestro trabajo</p>
+      <h2>Del diseño en pantalla al acero</h2>
+    </div>
+    <div class="galeria">
+      <figure>
+        <img src="img/diseno-cad.jpg" alt="Modelo 3D explosionado de un molde de inyección con placas, guías y corazones" width="1004" height="708" loading="lazy">
+        <figcaption>Diseño 3D de un molde de inyección</figcaption>
+      </figure>
+      <figure>
+        <img src="img/molde-4-cavidades.jpg" alt="Placa de molde de cuatro cavidades con logotipo grabado en cada cavidad y canales de alimentación en cruz" width="1004" height="848" loading="lazy">
+        <figcaption>Placa de molde de 4 cavidades con grabado</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section class="seccion" id="proceso" style="padding-top:0">
   <div class="envoltura">
     <div class="seccion-cabeza">
@@ -381,7 +407,7 @@ textarea { min-height: 8rem; resize: vertical; }
             </tbody>
           </table>
         </div>
-        <h3>Software</h3>
+        <h3>Área de diseño · software</h3>
         <div class="chips">
           <span>Mastercam</span><span>SolidWorks</span><span>AutoCAD</span><span>ArtCAM</span><span>Inventor</span>
         </div>
@@ -404,9 +430,8 @@ textarea { min-height: 8rem; resize: vertical; }
       </div>
     </div>
     <div class="principios">
-      <div class="principio"><h3>Diseño y manufactura en un solo lugar</h3><p>El mismo equipo que diseña programa las máquinas y fabrica, así nada se pierde entre el plano y la pieza.</p></div>
-      <div class="principio"><h3>Moldes y troqueles para varios procesos</h3><p>Plástico, aluminio, zamak, baquelita, soplado y lámina troquelada.</p></div>
-      <div class="principio"><h3>Experiencia comprobada</h3><p>Más de 36 años resolviendo proyectos para la industria metalmecánica.</p></div>
+      <div class="principio"><h3>Misión</h3><p>Ser parte del equipo de trabajo de cada uno de nuestros clientes, con la confianza de que Ingeniería y Diseño siempre brindará lo mejor en especificaciones de calidad, precisión y tiempo para satisfacer las necesidades del sector industrial.</p></div>
+      <div class="principio"><h3>Objetivo</h3><p>Trabajar en colaboración con nuestros clientes para entender sus necesidades y desarrollar soluciones personalizadas que se adapten a sus requerimientos específicos. Con nuestra experiencia y conocimientos, nos comprometemos a entregar resultados de alta calidad.</p></div>
     </div>
   </div>
 </section>
