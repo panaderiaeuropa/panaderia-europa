@@ -140,10 +140,14 @@ p { margin: 0; }
 .servicio li::before { content: ""; position: absolute; left: 0; top: .72em; width: .5rem; height: 2px; background: var(--naranja); }
 
 /* Galería */
-.galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.5rem; }
+.galeria { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1.75rem 1.25rem; }
 .galeria figure { margin: 0; min-width: 0; }
 .galeria img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid var(--linea); }
 .galeria figcaption { font: 400 .78rem/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--tenue); margin-top: .7rem; }
+@media (max-width: 560px) {
+  .galeria { grid-template-columns: 1fr 1fr; gap: 1.25rem .75rem; }
+  .galeria figcaption { font-size: .68rem; letter-spacing: .03em; }
+}
 
 /* Proceso */
 .proceso { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; counter-reset: paso; }
@@ -350,6 +354,7 @@ textarea { min-height: 8rem; resize: vertical; }
     <div class="seccion-cabeza">
       <p class="etiqueta">Nuestro trabajo</p>
       <h2>Del diseño en pantalla al acero</h2>
+      <p>Moldes, insertos, electrodos y piezas especiales hechos en nuestro taller.</p>
     </div>
     <div class="galeria">
       <figure>
@@ -357,12 +362,48 @@ textarea { min-height: 8rem; resize: vertical; }
         <figcaption>Diseño 3D de un molde de inyección</figcaption>
       </figure>
       <figure>
+        <img src="img/molde-inyeccion.jpg" alt="Molde de inyección abierto mostrando la cavidad, el corazón y las guías" width="1100" height="1456" loading="lazy">
+        <figcaption>Molde de inyección terminado</figcaption>
+      </figure>
+      <figure>
+        <img src="img/molde-soplado-2.jpg" alt="Molde de soplado abierto con dos cavidades en forma de botella" width="1100" height="1456" loading="lazy">
+        <figcaption>Molde de soplado de 2 cavidades</figcaption>
+      </figure>
+      <figure>
+        <img src="img/molde-engrane.jpg" alt="Placas de molde con cavidad en forma de engrane al centro" width="1100" height="1456" loading="lazy">
+        <figcaption>Molde para pieza tipo engrane</figcaption>
+      </figure>
+      <figure>
         <img src="img/molde-4-cavidades.jpg" alt="Placa de molde de cuatro cavidades con logotipo grabado en cada cavidad y canales de alimentación en cruz" width="1004" height="848" loading="lazy">
         <figcaption>Placa de molde de 4 cavidades con grabado</figcaption>
       </figure>
       <figure>
+        <img src="img/placas-molde.jpg" alt="Juegos de placas de molde maquinadas sobre el banco de trabajo" width="1100" height="1456" loading="lazy">
+        <figcaption>Placas de molde maquinadas</figcaption>
+      </figure>
+      <figure>
+        <img src="img/electrodo-cobre.jpg" alt="Electrodo de cobre ranurado junto a la placa de acero que va a erosionar, con sus medidas marcadas" width="1100" height="1456" loading="lazy">
+        <figcaption>Electrodo de cobre para electroerosión</figcaption>
+      </figure>
+      <figure>
         <img src="img/electroerosion-trabajando.jpg" alt="Electrodo de electroerosión sobre un inserto de molde sumergido en dieléctrico" width="1004" height="1339" loading="lazy">
-        <figcaption>Electroerosión por penetración en un inserto de molde</figcaption>
+        <figcaption>Electroerosión por penetración en un inserto</figcaption>
+      </figure>
+      <figure>
+        <img src="img/insertos-grabados.jpg" alt="Ocho insertos circulares con el mismo grabado, acomodados en una charola" width="1100" height="1456" loading="lazy">
+        <figcaption>Lote de insertos grabados</figcaption>
+      </figure>
+      <figure>
+        <img src="img/inserto-detalle.jpg" alt="Acercamiento a un inserto torneado con grabado de flechas y tapa" width="1100" height="1456" loading="lazy">
+        <figcaption>Detalle del grabado en un inserto</figcaption>
+      </figure>
+      <figure>
+        <img src="img/piezas-brida.jpg" alt="Cinco piezas torneadas con brida y barrenos sobre el banco de trabajo" width="1100" height="816" loading="lazy">
+        <figcaption>Piezas especiales torneadas con brida</figcaption>
+      </figure>
+      <figure>
+        <img src="img/piezas-torneadas.jpg" alt="Seis piezas torneadas escalonadas y pulidas sobre un escritorio" width="1100" height="816" loading="lazy">
+        <figcaption>Piezas torneadas y pulidas</figcaption>
       </figure>
     </div>
   </div>
