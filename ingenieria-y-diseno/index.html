@@ -4,21 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ingeniería y Diseño</title>
-<meta name="description" content="Diseño, fabricación y mantenimiento de moldes de inyección de plástico.">
+<meta name="description" content="Diseño y manufactura de moldes, troqueles y piezas especiales. 35 años de experiencia en la Ciudad de México.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: plano técnico. Bandas a todo lo ancho, contenido en una columna de 72rem,
-   cotas y etiquetas monoespaciadas como en un dibujo de taller. */
+/* Layout: plano técnico. Bandas a todo lo ancho en el azul marino del logo, contenido
+   en una columna de 72rem, cotas y etiquetas monoespaciadas como en un dibujo de taller. */
 :root {
-  --papel: #eef1f2;      /* fondo, gris acero claro */
-  --lamina: #ffffff;     /* superficies */
-  --tinta: #15212b;      /* texto y bandas oscuras */
-  --tenue: #55636e;      /* texto secundario */
-  --linea: #c9d1d6;      /* trazos y bordes */
-  --fundido: #d9661f;    /* acento: plástico fundido */
-  --sobre-tinta: #e9eef1;/* texto sobre bandas oscuras */
+  --papel: #eef0f5;       /* fondo, gris con matiz azul */
+  --lamina: #ffffff;      /* superficies */
+  --texto: #121a33;       /* texto principal */
+  --tenue: #535d74;       /* texto secundario */
+  --linea: #c8cede;       /* trazos y bordes */
+  --marino: #0f1d5c;      /* bandas oscuras, azul del logo */
+  --sobre-marino: #eaedf7;/* texto sobre bandas oscuras */
+  --naranja: #f2a03d;     /* acento del logo, sobre fondos oscuros y botones */
+  --naranja-texto: #b45f09; /* acento como texto sobre fondo claro */
+  --rojo: #e2361f;        /* punto del logo */
   --display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
   --cuerpo: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
@@ -27,20 +30,18 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --papel: #0f171d; --lamina: #16212a; --tinta: #0a1015; --tenue: #93a3ae;
-    --linea: #2a3944; --fundido: #f08240; --sobre-tinta: #e9eef1;
+    --papel: #0c1230; --lamina: #131b42; --texto: #e2e6f2; --tenue: #9aa3bd;
+    --linea: #29325e; --marino: #080d26; --sobre-marino: #eaedf7;
+    --naranja: #f4a849; --naranja-texto: #f4a849;
     color-scheme: dark;
   }
-  :root:not([data-theme="light"]) body { color: #dfe6ea; }
 }
 :root[data-theme="dark"] {
-  --papel: #0f171d; --lamina: #16212a; --tinta: #0a1015; --tenue: #93a3ae;
-  --linea: #2a3944; --fundido: #f08240; --sobre-tinta: #e9eef1;
+  --papel: #0c1230; --lamina: #131b42; --texto: #e2e6f2; --tenue: #9aa3bd;
+  --linea: #29325e; --marino: #080d26; --sobre-marino: #eaedf7;
+  --naranja: #f4a849; --naranja-texto: #f4a849;
   color-scheme: dark;
 }
-:root { --texto: #15212b; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --texto: #dfe6ea; } }
-:root[data-theme="dark"] { --texto: #dfe6ea; }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
@@ -52,102 +53,96 @@ body {
 }
 img, svg { max-width: 100%; }
 a { color: inherit; }
-:focus-visible { outline: 2px solid var(--fundido); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--naranja); outline-offset: 3px; }
 h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.05; margin: 0; text-wrap: balance; letter-spacing: .005em; }
 p { margin: 0; }
 
 .envoltura { max-width: var(--ancho); margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2rem); }
-.etiqueta { font: 500 .75rem/1.2 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--fundido); }
+.etiqueta { font: 500 .75rem/1.2 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--naranja-texto); }
+.oscura .etiqueta { color: var(--naranja); }
 
 /* Encabezado */
 .encabezado {
   position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
-  background: var(--tinta); color: var(--sobre-tinta);
+  background: var(--marino); color: var(--sobre-marino);
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
 .encabezado .envoltura { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4rem; }
 .marca { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
-.marca svg { width: 2.4rem; height: 2.4rem; flex: none; }
+.marca svg { width: 2.6rem; height: 2.6rem; flex: none; }
 .marca span { font: 600 1.35rem/1 var(--display); letter-spacing: .02em; }
 .marca small { display: block; font: 400 .68rem/1.3 var(--mono); letter-spacing: .12em; text-transform: uppercase; opacity: .7; margin-top: .2rem; }
 .nav { display: flex; gap: 1.75rem; align-items: center; }
 .nav a { text-decoration: none; font-size: .95rem; opacity: .85; }
-.nav a:hover { opacity: 1; color: var(--fundido); }
+.nav a:hover { opacity: 1; color: var(--naranja); }
 .nav .boton { opacity: 1; }
+.nav .boton:hover { color: var(--marino); }
 .menu-btn { display: none; background: none; border: 1px solid rgba(255,255,255,.25); color: inherit; border-radius: 4px; width: 2.75rem; height: 2.75rem; cursor: pointer; }
 .menu-btn svg { width: 1.3rem; height: 1.3rem; }
-@media (max-width: 820px) {
+@media (max-width: 860px) {
   .menu-btn { display: inline-grid; place-items: center; }
-  .nav { position: absolute; inset: 100% 0 auto 0; background: var(--tinta); flex-direction: column; align-items: stretch; gap: 0; padding: .5rem clamp(1rem, 4vw, 2rem) 1.25rem; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .nav { position: absolute; inset: 100% 0 auto 0; background: var(--marino); flex-direction: column; align-items: stretch; gap: 0; padding: .5rem clamp(1rem, 4vw, 2rem) 1.25rem; border-bottom: 1px solid rgba(255,255,255,.08); }
   .nav a { padding: .85rem 0; border-bottom: 1px solid rgba(255,255,255,.08); }
-  .nav .boton { margin-top: 1rem; text-align: center; border-bottom: 0; }
+  .nav .boton { margin-top: 1rem; text-align: center; border-bottom: 0; padding: .95rem 1.4rem; }
   .nav:not(.abierta) { display: none; }
 }
 
 .boton {
   display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
   font: 600 1rem/1 var(--cuerpo); text-decoration: none; cursor: pointer;
-  padding: .95rem 1.4rem; border-radius: 3px; border: 1.5px solid var(--fundido);
-  background: var(--fundido); color: #fff;
+  padding: .95rem 1.4rem; border-radius: 3px; border: 1.5px solid var(--naranja);
+  background: var(--naranja); color: #121a33;
 }
-.boton:hover { filter: brightness(1.08); }
+.boton:hover { filter: brightness(1.06); }
 .boton.contorno { background: transparent; color: inherit; border-color: currentColor; }
 
 /* Portada */
-.portada { background: var(--tinta); color: var(--sobre-tinta); position: relative; overflow: hidden; }
+.portada { background: var(--marino); color: var(--sobre-marino); position: relative; overflow: hidden; }
 .portada::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .6;
   background-image:
     linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 .portada .envoltura { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center; padding-block: clamp(3rem, 8vw, 6rem); }
-.portada h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); font-weight: 700; margin-block: 1rem 1.25rem; }
-.portada h1 em { font-style: normal; color: var(--fundido); }
+.portada h1 { font-size: clamp(2.5rem, 6.5vw, 4.4rem); font-weight: 700; margin-block: 1rem 1.25rem; }
+.portada h1 em { font-style: normal; color: var(--naranja); }
 .portada p.intro { max-width: 34rem; font-size: 1.125rem; opacity: .85; }
 .acciones { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 2rem; }
-.plano { width: 100%; height: auto; color: var(--sobre-tinta); }
+.plano { width: 100%; height: auto; color: var(--sobre-marino); }
 .plano .cota { font: 500 11px var(--mono); fill: currentColor; opacity: .7; }
-@media (max-width: 820px) {
+@media (max-width: 860px) {
   .portada .envoltura { grid-template-columns: 1fr; gap: 2.5rem; }
   .acciones .boton { flex: 1 1 14rem; }
 }
-
-/* Datos en la portada */
-.datos { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; margin-top: 2.75rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.12); }
-.datos div { font: 400 .78rem/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; opacity: .7; }
-.datos b { display: block; font: 600 1.6rem/1.1 var(--display); letter-spacing: 0; text-transform: none; opacity: 1; color: var(--sobre-tinta); margin-bottom: .2rem; }
+.datos { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; margin-top: 2.75rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.14); }
+.datos div { font: 400 .78rem/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; opacity: .75; }
+.datos b { display: block; font: 600 1.7rem/1.1 var(--display); letter-spacing: 0; text-transform: none; color: var(--naranja); margin-bottom: .2rem; }
 
 /* Secciones */
 .seccion { padding-block: clamp(3.5rem, 9vw, 6rem); }
 .seccion-cabeza { display: grid; gap: .9rem; max-width: 44rem; margin-bottom: clamp(2rem, 5vw, 3rem); }
 .seccion-cabeza h2 { font-size: clamp(2rem, 5vw, 3rem); }
 .seccion-cabeza p { color: var(--tenue); }
-
-/* Problemas */
-.fallas { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0; border-top: 1px solid var(--linea); border-left: 1px solid var(--linea); }
-.falla { padding: 1.5rem; border-right: 1px solid var(--linea); border-bottom: 1px solid var(--linea); display: grid; gap: .5rem; align-content: start; min-width: 0; }
-.falla h3 { font-size: 1.45rem; }
-.falla .sintoma { font: 400 .78rem/1.4 var(--mono); color: var(--tenue); text-transform: uppercase; letter-spacing: .08em; }
-.falla p { color: var(--tenue); font-size: .98rem; }
+.oscura { background: var(--marino); color: var(--sobre-marino); }
+.oscura .seccion-cabeza p { color: var(--sobre-marino); opacity: .75; }
 
 /* Servicios */
-.servicios-banda { background: var(--lamina); border-block: 1px solid var(--linea); }
-.servicios { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: 2.5rem 3rem; }
-.servicio { display: grid; grid-template-columns: 2.75rem 1fr; gap: 1rem; align-items: start; min-width: 0; }
-.servicio svg { width: 2.75rem; height: 2.75rem; color: var(--fundido); }
-.servicio h3 { font-size: 1.6rem; margin-bottom: .5rem; }
-.servicio p { color: var(--tenue); }
-.servicio ul { margin: .75rem 0 0; padding: 0; list-style: none; display: grid; gap: .35rem; }
+.servicios { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: 0; border-top: 1px solid var(--linea); border-left: 1px solid var(--linea); background: var(--lamina); }
+.servicio { display: grid; grid-template-columns: 2.75rem 1fr; gap: 1rem; align-items: start; min-width: 0; padding: 1.75rem 1.5rem; border-right: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+.servicio svg { width: 2.75rem; height: 2.75rem; color: var(--naranja-texto); }
+.servicio h3 { font-size: 1.55rem; margin-bottom: .45rem; }
+.servicio p { color: var(--tenue); font-size: .98rem; }
+.servicio ul { margin: .75rem 0 0; padding: 0; list-style: none; display: grid; gap: .3rem; }
 .servicio li { font-size: .95rem; padding-left: 1.1rem; position: relative; }
-.servicio li::before { content: ""; position: absolute; left: 0; top: .7em; width: .5rem; height: 2px; background: var(--fundido); }
+.servicio li::before { content: ""; position: absolute; left: 0; top: .72em; width: .5rem; height: 2px; background: var(--naranja); }
 
 /* Proceso */
 .proceso { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; counter-reset: paso; }
 .paso { counter-increment: paso; padding: 1.25rem 1.25rem 0 0; border-top: 2px solid var(--linea); position: relative; min-width: 0; }
-.paso::before { content: counter(paso, decimal-leading-zero); display: block; font: 500 .8rem var(--mono); color: var(--fundido); margin-bottom: .75rem; }
-.paso::after { content: ""; position: absolute; top: -6px; left: 0; width: 10px; height: 10px; background: var(--fundido); border-radius: 50%; }
+.paso::before { content: counter(paso, decimal-leading-zero); display: block; font: 500 .8rem var(--mono); color: var(--naranja-texto); margin-bottom: .75rem; }
+.paso::after { content: ""; position: absolute; top: -6px; left: 0; width: 10px; height: 10px; background: var(--naranja); border-radius: 50%; }
 .paso h3 { font-size: 1.35rem; margin-bottom: .4rem; }
 .paso p { color: var(--tenue); font-size: .95rem; }
 @media (max-width: 900px) {
@@ -156,36 +151,42 @@ p { margin: 0; }
   .paso::after { top: 0; left: -6px; }
 }
 
-/* Capacidades */
-.capacidades-banda { background: var(--tinta); color: var(--sobre-tinta); }
-.capacidades-banda .seccion-cabeza p { color: var(--sobre-tinta); opacity: .75; }
-.capacidades { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+/* Equipo y software */
+.taller { display: grid; grid-template-columns: .9fr 1.1fr; gap: 3rem; align-items: start; }
+.taller figure { margin: 0; min-width: 0; }
+.taller figure img { display: block; width: 100%; height: auto; border: 1px solid rgba(255,255,255,.15); }
+.taller figcaption { font: 400 .8rem/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; opacity: .7; margin-top: .75rem; }
 .tabla-envoltura { overflow-x: auto; min-width: 0; }
-table { width: 100%; border-collapse: collapse; font-size: .95rem; }
-th, td { text-align: left; padding: .8rem .75rem .8rem 0; border-bottom: 1px solid rgba(255,255,255,.12); vertical-align: top; }
-th { font: 500 .72rem/1.3 var(--mono); letter-spacing: .12em; text-transform: uppercase; opacity: .65; font-weight: 500; }
-td.valor { font-family: var(--mono); font-size: .9rem; color: var(--fundido); white-space: nowrap; }
-.sectores { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
-.sectores span { border: 1px solid rgba(255,255,255,.25); padding: .45rem .8rem; border-radius: 2px; font-size: .95rem; }
-.capacidades h3 { font-size: 1.5rem; margin-bottom: .5rem; }
-@media (max-width: 820px) { .capacidades { grid-template-columns: 1fr; } }
+table { width: 100%; border-collapse: collapse; font-size: .97rem; }
+th, td { text-align: left; padding: .8rem .75rem .8rem 0; border-bottom: 1px solid rgba(255,255,255,.14); vertical-align: top; }
+th { font: 500 .72rem/1.3 var(--mono); letter-spacing: .12em; text-transform: uppercase; opacity: .65; }
+td.valor { font-family: var(--mono); font-size: .88rem; color: var(--naranja); }
+.taller h3 { font-size: 1.5rem; margin-block: 2.25rem .9rem; }
+.chips { display: flex; flex-wrap: wrap; gap: .6rem; }
+.chips span { border: 1px solid rgba(255,255,255,.28); padding: .45rem .85rem; border-radius: 2px; font: 500 .95rem var(--mono); }
+@media (max-width: 860px) { .taller { grid-template-columns: 1fr; } }
 
 /* Nosotros */
 .nosotros { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
 .nosotros p + p { margin-top: 1rem; }
 .nosotros .texto { color: var(--tenue); max-width: 36rem; }
+.anios { display: flex; align-items: baseline; gap: .75rem; margin-bottom: 1.5rem; }
+.anios b { font: 700 clamp(4rem, 12vw, 6.5rem)/0.9 var(--display); color: var(--naranja-texto); }
+.anios span { font: 500 .8rem/1.3 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--tenue); }
 .principios { display: grid; gap: 1rem; }
 .principio { background: var(--lamina); border: 1px solid var(--linea); padding: 1.25rem 1.4rem; border-radius: 3px; }
 .principio h3 { font-size: 1.3rem; margin-bottom: .3rem; }
 .principio p { color: var(--tenue); font-size: .97rem; }
-@media (max-width: 820px) { .nosotros { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .nosotros { grid-template-columns: 1fr; } }
 
 /* Contacto */
 .contacto-banda { background: var(--lamina); border-top: 1px solid var(--linea); }
 .contacto { display: grid; grid-template-columns: .85fr 1.15fr; gap: 3rem; align-items: start; }
-.contacto .via { display: grid; gap: .2rem; margin-top: 1.5rem; }
-.contacto .via span { font: 500 .72rem var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--tenue); }
-.contacto .via a, .contacto .via b { font-size: 1.1rem; font-weight: 600; text-decoration: none; }
+.vias { display: grid; gap: 1.25rem; }
+.via { display: grid; gap: .2rem; }
+.via span { font: 500 .72rem var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--tenue); }
+.via b, .via address { font-size: 1.05rem; font-weight: 600; font-style: normal; }
+.via a { font-size: .95rem; color: var(--naranja-texto); }
 form { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.25rem; min-width: 0; }
 .campo { display: grid; gap: .35rem; min-width: 0; }
 .campo.ancho { grid-column: 1 / -1; }
@@ -194,17 +195,17 @@ input, select, textarea {
   font: inherit; font-size: 1rem; color: var(--texto); background: var(--papel);
   border: 1px solid var(--linea); border-radius: 3px; padding: .8rem .9rem; width: 100%;
 }
-input:focus, select:focus, textarea:focus { outline: 2px solid var(--fundido); outline-offset: 0; border-color: var(--fundido); }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--naranja); outline-offset: 0; border-color: var(--naranja); }
 textarea { min-height: 8rem; resize: vertical; }
 .form-pie { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
 .aviso { font-size: .95rem; color: var(--tenue); }
-.resumen { grid-column: 1 / -1; background: var(--papel); border: 1px dashed var(--fundido); border-radius: 3px; padding: 1.25rem; display: grid; gap: .75rem; }
+.resumen { grid-column: 1 / -1; background: var(--papel); border: 1px dashed var(--naranja-texto); border-radius: 3px; padding: 1.25rem; display: grid; gap: .75rem; }
 .resumen pre { margin: 0; white-space: pre-wrap; font: 400 .9rem/1.5 var(--mono); overflow-wrap: anywhere; }
-@media (max-width: 820px) { .contacto { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .contacto { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { form { grid-template-columns: 1fr; } }
 
 /* Pie */
-.pie { background: var(--tinta); color: var(--sobre-tinta); padding-block: 2.5rem; font-size: .9rem; }
+.pie { background: var(--marino); color: var(--sobre-marino); padding-block: 2.5rem; font-size: .9rem; }
 .pie .envoltura { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; align-items: center; }
 .pie p { opacity: .7; }
 
@@ -213,18 +214,21 @@ textarea { min-height: 8rem; resize: vertical; }
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="23" fill="#0f1d5c" stroke="rgba(255,255,255,.25)"/>
+    <path d="M17 15h7.5a9.5 9.5 0 0 1 0 19H17z" fill="none" stroke="#f2a03d" stroke-width="6" stroke-linejoin="round"/>
+    <circle cx="13" cy="12" r="4.2" fill="#e2361f"/>
+  </symbol>
+</svg>
+
 <header class="encabezado">
   <div class="envoltura">
     <a class="marca" href="#inicio" aria-label="Ingeniería y Diseño, inicio">
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <rect x="1" y="1" width="46" height="46" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
-        <path d="M14 12v24" stroke="currentColor" stroke-width="4" fill="none"/>
-        <path d="M22 12h6a10 10 0 0 1 0 24h-6z" stroke="currentColor" stroke-width="4" fill="none"/>
-        <path d="M4 24h40" stroke="#d9661f" stroke-width="2" stroke-dasharray="3 3"/>
-      </svg>
+      <svg aria-hidden="true"><use href="#logo"/></svg>
       <div>
         <span>Ingeniería y Diseño</span>
-        <small>Moldes de inyección</small>
+        <small>Moldes · troqueles · piezas especiales</small>
       </div>
     </a>
     <button class="menu-btn" id="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
@@ -233,7 +237,7 @@ textarea { min-height: 8rem; resize: vertical; }
     <nav class="nav" id="nav">
       <a href="#servicios">Servicios</a>
       <a href="#proceso">Proceso</a>
-      <a href="#capacidades">Capacidades</a>
+      <a href="#taller">Equipo y software</a>
       <a href="#nosotros">Nosotros</a>
       <a class="boton" href="#contacto">Solicitar cotización</a>
     </nav>
@@ -244,46 +248,35 @@ textarea { min-height: 8rem; resize: vertical; }
 <section class="portada" id="inicio">
   <div class="envoltura">
     <div>
-      <p class="etiqueta">Diseño · Fabricación · Mantenimiento</p>
-      <h1>Moldes de inyección que llegan a producción <em>sin sorpresas</em></h1>
-      <p class="intro">Diseñamos, fabricamos y reparamos moldes para piezas de plástico. Revisamos la pieza antes de cortar acero, para que el molde salga bien desde la primera prueba y aguante los ciclos que tu línea necesita.</p>
+      <p class="etiqueta">Ciudad de México · Desde hace 35 años</p>
+      <h1>Diseño y manufactura de <em>moldes, troqueles</em> y piezas especiales</h1>
+      <p class="intro">Diseñamos por computadora y fabricamos en centros CNC de torneado y maquinado. Desde el modelo 3D hasta la pieza terminada, todo se hace en nuestro taller.</p>
       <div class="acciones">
         <a class="boton" href="#contacto">Solicitar cotización</a>
         <a class="boton contorno" href="#servicios">Ver servicios</a>
       </div>
       <div class="datos">
-        <div><b>Diseño 3D</b>con revisión de manufacturabilidad</div>
-        <div><b>Prueba T1</b>antes de liberar el molde</div>
-        <div><b>Diagnóstico</b>de fallas en moldes existentes</div>
+        <div><b>35 años</b>de experiencia</div>
+        <div><b>CAD / CAM</b>diseño por computadora</div>
+        <div><b>CNC</b>torneado y maquinado</div>
       </div>
     </div>
-    <svg class="plano" viewBox="0 0 420 340" role="img" aria-label="Corte esquemático de un molde de inyección de dos placas">
+    <svg class="plano" viewBox="0 0 420 340" role="img" aria-label="Corte esquemático de un molde de dos placas">
       <g fill="none" stroke="currentColor" stroke-width="1.5">
-        <!-- placa fija -->
         <rect x="40" y="40" width="300" height="100" opacity=".9"/>
-        <!-- placa móvil -->
         <rect x="40" y="150" width="300" height="110" opacity=".9"/>
-        <!-- cavidad -->
         <path d="M120 140v-35h140v35" stroke-width="2"/>
-        <!-- corazón -->
         <path d="M140 150v35h100v-35" stroke-width="2"/>
-        <!-- bebedero -->
-        <path d="M185 40v65M195 40v65" />
-        <!-- botadores -->
+        <path d="M185 40v65M195 40v65"/>
         <path d="M160 185v75M220 185v75" stroke-dasharray="4 3" opacity=".7"/>
-        <!-- guías -->
         <circle cx="70" cy="90" r="9" opacity=".7"/><circle cx="310" cy="90" r="9" opacity=".7"/>
         <circle cx="70" cy="205" r="9" opacity=".7"/><circle cx="310" cy="205" r="9" opacity=".7"/>
-        <!-- canales de enfriamiento -->
         <circle cx="105" cy="70" r="6" opacity=".6"/><circle cx="275" cy="70" r="6" opacity=".6"/>
         <circle cx="115" cy="225" r="6" opacity=".6"/><circle cx="265" cy="225" r="6" opacity=".6"/>
       </g>
-      <!-- pieza (plástico) -->
-      <path d="M120 105h140v80h-20v-35h-100v35h-20z" fill="#d9661f" opacity=".85"/>
-      <!-- línea de partición -->
-      <path d="M20 145h340" stroke="#d9661f" stroke-width="1.5" stroke-dasharray="8 4"/>
+      <path d="M120 105h140v80h-20v-35h-100v35h-20z" fill="#f2a03d" opacity=".9"/>
+      <path d="M20 145h340" stroke="#e2361f" stroke-width="1.5" stroke-dasharray="8 4"/>
       <text class="cota" x="350" y="141">L.P.</text>
-      <!-- cotas -->
       <g stroke="currentColor" stroke-width="1" opacity=".6" fill="none">
         <path d="M120 285v-14M260 285v-14M120 278h140"/>
         <path d="M120 278l6-3v6zM260 278l-6-3v6z" fill="currentColor"/>
@@ -299,153 +292,119 @@ textarea { min-height: 8rem; resize: vertical; }
   </div>
 </section>
 
-<section class="seccion" id="problemas">
-  <div class="envoltura">
-    <div class="seccion-cabeza">
-      <p class="etiqueta">Fallas que atendemos</p>
-      <h2>Problemas habituales en moldes de inyección</h2>
-      <p>Casi todos tienen una causa en el diseño del molde, en su desgaste o en cómo se opera. Buscamos esa causa antes de proponer una reparación.</p>
-    </div>
-    <div class="fallas">
-      <article class="falla">
-        <span class="sintoma">Síntoma: exceso de material</span>
-        <h3>Rebaba</h3>
-        <p>Plástico que escapa por la línea de partición o por los botadores. Suele venir de superficies de cierre gastadas o de un ajuste deficiente.</p>
-      </article>
-      <article class="falla">
-        <span class="sintoma">Síntoma: pieza incompleta</span>
-        <h3>Piezas cortas</h3>
-        <p>La cavidad no se llena. Revisamos ventilación, tamaño de entradas y balance de canales.</p>
-      </article>
-      <article class="falla">
-        <span class="sintoma">Síntoma: pieza deformada</span>
-        <h3>Alabeo y rechupes</h3>
-        <p>Enfriamiento desigual o espesores de pared mal resueltos. Se corrige con canales de enfriamiento y cambios de diseño.</p>
-      </article>
-      <article class="falla">
-        <span class="sintoma">Síntoma: baja productividad</span>
-        <h3>Ciclos largos</h3>
-        <p>Un molde que enfría lento cuesta dinero en cada pieza. Optimizamos el enfriamiento para reducir el tiempo de ciclo.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="seccion servicios-banda" id="servicios">
+<section class="seccion" id="servicios">
   <div class="envoltura">
     <div class="seccion-cabeza">
       <p class="etiqueta">Servicios</p>
-      <h2>Del diseño de la pieza al molde en producción</h2>
-      <p>Puedes contratar el proyecto completo o solo la parte que necesites.</p>
+      <h2>Lo que diseñamos y fabricamos</h2>
+      <p>Puedes encargarnos el proyecto completo o solo la parte que necesites: el diseño, el maquinado o la pieza.</p>
     </div>
     <div class="servicios">
       <article class="servicio">
-        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="8" width="36" height="28"/><path d="M4 16h36M14 36v-20M22 22l6 6 8-10"/></svg>
+        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="8" width="36" height="24"/><path d="M16 38h12M22 32v6M12 26l8-10 6 6 6-8"/></svg>
+        <div>
+          <h3>Diseño por computadora CAD/CAM</h3>
+          <p>Modelado 3D, planos de fabricación y programación de las trayectorias de maquinado.</p>
+        </div>
+      </article>
+      <article class="servicio">
+        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="6" y="6" width="32" height="14"/><rect x="6" y="24" width="32" height="14"/><path d="M15 20v-6h14v6M18 24v5h8v-5"/></svg>
         <div>
           <h3>Diseño de moldes</h3>
-          <p>Modelado 3D del molde completo a partir de tu pieza o de una muestra física.</p>
+          <p>Moldes a la medida según el material y el proceso de tu pieza.</p>
           <ul>
-            <li>Revisión de manufacturabilidad (DFM)</li>
-            <li>Ángulos de salida, entradas y botado</li>
-            <li>Planos de detalle para fabricación</li>
+            <li>Compresión de baquelita</li>
+            <li>Inyección de plástico</li>
+            <li>Inyección de aluminio</li>
+            <li>Inyección de zamak</li>
+            <li>Soplado</li>
           </ul>
         </div>
       </article>
       <article class="servicio">
-        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 36h28M12 36V20h20v16M16 20v-8h12v8M22 12V6"/><circle cx="22" cy="28" r="3"/></svg>
+        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 6h28v10H8zM22 16v6M8 38h28v-8H8z"/><path d="M14 30l8-8 8 8"/></svg>
         <div>
-          <h3>Fabricación a la medida</h3>
-          <p>Maquinado, ajuste y armado del molde, con pruebas hasta liberar la pieza.</p>
+          <h3>Diseño de troqueles</h3>
+          <p>Troqueles para corte y formado de lámina.</p>
           <ul>
-            <li>Moldes de una o varias cavidades</li>
-            <li>Insertos, correderas y botadores</li>
-            <li>Prueba de inyección y reporte dimensional</li>
+            <li>Progresivos</li>
+            <li>Dobladores</li>
+            <li>Compuestos</li>
+            <li>De estampado</li>
           </ul>
         </div>
       </article>
       <article class="servicio">
-        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M28 6a9 9 0 0 0-8 12L6 32l6 6 14-14a9 9 0 0 0 12-8l-6 2-4-4z"/></svg>
+        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="16" width="14" height="12"/><path d="M18 19h18v6H18M36 17v10"/><circle cx="11" cy="22" r="3"/></svg>
         <div>
-          <h3>Mantenimiento y reparación</h3>
-          <p>Mantenimiento preventivo y correctivo para que el molde no frene tu línea.</p>
+          <h3>Manufactura CNC</h3>
+          <p>Fabricación de componentes con precisión y repetibilidad.</p>
           <ul>
-            <li>Modificaciones por cambios de ingeniería</li>
-            <li>Soldadura láser y TIG en aceros, aluminio y cobre-berilio</li>
-            <li>Ajuste de sello para eliminar rebaba</li>
-            <li>Insertos en bases dañadas</li>
+            <li>Centro de torneado</li>
+            <li>Centro de maquinado</li>
           </ul>
         </div>
       </article>
       <article class="servicio">
-        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 34c8-2 10-10 16-10s8 8 16 10"/><path d="M14 10l2 4M22 6v5M30 10l-2 4"/></svg>
+        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 4v14M16 18h12v6H16zM22 24l-3 6 6 2-3 6"/><path d="M8 40h28"/></svg>
         <div>
-          <h3>Acabados de cavidad</h3>
-          <p>El acabado del molde es el acabado de tu pieza. Lo preparamos según lo que pida el producto.</p>
-          <ul>
-            <li>Pulido espejo con pasta de diamante</li>
-            <li>Sandblasting con perla de vidrio, óxido de aluminio o carburo</li>
-            <li>Preparación de acero para texturizado químico</li>
-          </ul>
+          <h3>Grabados y electroerosión</h3>
+          <p>Electroerosión por penetración para cavidades, detalles finos y grabados en acero endurecido.</p>
         </div>
       </article>
       <article class="servicio">
-        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="19" cy="19" r="12"/><path d="M28 28l10 10M19 13v7l4 3"/></svg>
+        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 4l16 9v18l-16 9-16-9V13z"/><path d="M6 13l16 9 16-9M22 22v18"/></svg>
         <div>
-          <h3>Asesoría y análisis de fallas</h3>
-          <p>Análisis de causa raíz de defectos en la pieza o en el molde, con un plan de corrección por escrito.</p>
-          <ul>
-            <li>Diagnóstico en tu planta</li>
-            <li>Revisión de parámetros de proceso</li>
-            <li>Capacitación al personal de mantenimiento</li>
-          </ul>
+          <h3>Piezas especiales</h3>
+          <p>Piezas únicas o en lotes cortos fabricadas a partir de tu plano, tu modelo 3D o una muestra.</p>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-<section class="seccion" id="proceso">
+<section class="seccion" id="proceso" style="padding-top:0">
   <div class="envoltura">
     <div class="seccion-cabeza">
       <p class="etiqueta">Cómo trabajamos</p>
-      <h2>Cinco etapas, con tu aprobación en cada una</h2>
+      <h2>Del plano a la pieza terminada</h2>
     </div>
     <ol class="proceso">
-      <li class="paso"><h3>Revisión de la pieza</h3><p>Analizamos tu modelo o muestra y señalamos lo que conviene cambiar antes de diseñar.</p></li>
-      <li class="paso"><h3>Diseño del molde</h3><p>Modelo 3D, planos y cotización definitiva para que los apruebes.</p></li>
-      <li class="paso"><h3>Maquinado y ajuste</h3><p>Fabricamos placas, cavidad y corazón, y armamos el molde.</p></li>
-      <li class="paso"><h3>Prueba de inyección</h3><p>Inyectamos las primeras piezas y medimos contra el plano.</p></li>
-      <li class="paso"><h3>Liberación</h3><p>Entregamos el molde con su reporte y el plan de mantenimiento.</p></li>
+      <li class="paso"><h3>Revisión</h3><p>Analizamos tu pieza, plano o muestra y el proceso en que se va a usar.</p></li>
+      <li class="paso"><h3>Diseño CAD</h3><p>Modelo 3D y planos del molde, troquel o pieza para que los apruebes.</p></li>
+      <li class="paso"><h3>Programación CAM</h3><p>Generamos las trayectorias para los centros de torneado y maquinado.</p></li>
+      <li class="paso"><h3>Manufactura</h3><p>Maquinado, electroerosión, ajuste y armado en nuestro taller.</p></li>
+      <li class="paso"><h3>Prueba y entrega</h3><p>Verificamos medidas y funcionamiento antes de entregarte.</p></li>
     </ol>
   </div>
 </section>
 
-<section class="seccion capacidades-banda" id="capacidades">
+<section class="seccion oscura" id="taller">
   <div class="envoltura">
     <div class="seccion-cabeza">
-      <p class="etiqueta">Capacidades</p>
-      <h2>Con qué trabajamos</h2>
-      <p>Materiales y alcances habituales. Si tu proyecto sale de estos rangos, consúltanos.</p>
+      <p class="etiqueta">Equipo y software</p>
+      <h2>Nuestro taller</h2>
+      <p>El diseño y la manufactura se hacen en el mismo lugar, con el mismo equipo de trabajo.</p>
     </div>
-    <div class="capacidades">
-      <div class="tabla-envoltura">
-        <table>
-          <thead><tr><th>Concepto</th><th>Alcance</th></tr></thead>
-          <tbody>
-            <tr><td>Aceros para molde</td><td class="valor">P20 · H13 · D2 · O1</td></tr>
-            <tr><td>Otros materiales</td><td class="valor">Aluminio · cobre-berilio</td></tr>
-            <tr><td>Soldadura</td><td class="valor">Láser · TIG</td></tr>
-            <tr><td>Tipo de molde</td><td class="valor">2 y 3 placas · colada caliente</td></tr>
-                        <tr><td>Formatos de archivo</td><td class="valor">STEP · IGES · DWG</td></tr>
-            <tr><td>Procesos</td><td class="valor">Inyección · soplado · extrusión</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="taller">
+      <figure>
+        <img src="img/torno-haas.jpg" alt="Centro de torneado HAAS SL-10 en el taller" width="497" height="485" loading="lazy">
+        <figcaption>Centro de torneado HAAS SL-10</figcaption>
+      </figure>
       <div>
-        <h3>Industrias que atendemos</h3>
-        <p style="opacity:.75">Piezas técnicas y de consumo para empresas con procesos de plástico.</p>
-        <div class="sectores">
-          <span>Automotriz</span><span>Envase y embalaje</span><span>Electrodomésticos</span><span>Eléctrico</span><span>Construcción</span><span>Consumo</span>
+        <div class="tabla-envoltura">
+          <table>
+            <thead><tr><th>Equipo</th><th>Uso</th></tr></thead>
+            <tbody>
+              <tr><td>Centro de torneado HAAS</td><td class="valor">Piezas cilíndricas, flechas, bujes</td></tr>
+              <tr><td>Centro de maquinado CNC</td><td class="valor">Placas, cavidades, corazones</td></tr>
+              <tr><td>Electroerosión por penetración</td><td class="valor">Grabados y detalles finos</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Software</h3>
+        <div class="chips">
+          <span>Mastercam</span><span>SolidWorks</span><span>AutoCAD</span><span>ArtCAM</span><span>Inventor</span>
         </div>
       </div>
     </div>
@@ -459,15 +418,16 @@ textarea { min-height: 8rem; resize: vertical; }
         <p class="etiqueta">La empresa</p>
         <h2>Ingeniería y Diseño</h2>
       </div>
+      <div class="anios"><b>35</b><span>años diseñando<br>y fabricando</span></div>
       <div class="texto">
-        <p>Somos un taller de ingeniería dedicado a los moldes de inyección de plástico: los diseñamos, los fabricamos y los mantenemos funcionando.</p>
-        <p>Trabajamos directo con los equipos de ingeniería y mantenimiento de nuestros clientes. Hablamos en términos de piezas, ciclos y tolerancias, y entregamos todo por escrito.</p>
+        <p>Somos una empresa dedicada al diseño y la manufactura de moldes, troqueles y piezas especiales, con taller en la alcaldía Álvaro Obregón de la Ciudad de México.</p>
+        <p>Trabajamos directo con los equipos de ingeniería y producción de nuestros clientes, desde la primera idea de la pieza hasta su fabricación.</p>
       </div>
     </div>
     <div class="principios">
-      <div class="principio"><h3>Diagnóstico antes que presupuesto</h3><p>Primero entendemos por qué falla la pieza. Luego proponemos qué hacer.</p></div>
-      <div class="principio"><h3>Tiempos claros</h3><p>Cada etapa tiene fecha de entrega y te avisamos si algo cambia.</p></div>
-      <div class="principio"><h3>Documentación completa</h3><p>Planos, reportes de prueba y plan de mantenimiento con cada molde.</p></div>
+      <div class="principio"><h3>Diseño y manufactura en un solo lugar</h3><p>El mismo equipo que diseña programa las máquinas y fabrica, así nada se pierde entre el plano y la pieza.</p></div>
+      <div class="principio"><h3>Moldes y troqueles para varios procesos</h3><p>Plástico, aluminio, zamak, baquelita, soplado y lámina troquelada.</p></div>
+      <div class="principio"><h3>Experiencia comprobada</h3><p>35 años resolviendo proyectos para la industria.</p></div>
     </div>
   </div>
 </section>
@@ -477,11 +437,18 @@ textarea { min-height: 8rem; resize: vertical; }
     <div>
       <div class="seccion-cabeza">
         <p class="etiqueta">Cotización</p>
-        <h2>Cuéntanos de tu pieza o de tu molde</h2>
-        <p>Con el material, el volumen anual y una foto o archivo 3D te podemos dar una primera estimación.</p>
+        <h2>Cuéntanos qué necesitas fabricar</h2>
+        <p>Con un plano, un archivo 3D o una foto de la pieza te damos una primera estimación.</p>
       </div>
-      <div class="via"><span>Correo</span><b id="correo-texto">contacto@ingenieriaydiseno.mx</b></div>
-      <div class="via"><span>Teléfono / WhatsApp</span><b id="telefono-texto">Por definir</b></div>
+      <div class="vias">
+        <div class="via">
+          <span>Dirección</span>
+          <address>Magnolias No. 26, Col. Garcimarrero<br>Alcaldía Álvaro Obregón, C.P. 01510<br>Ciudad de México</address>
+          <a href="https://www.google.com/maps/search/?api=1&query=Magnolias+26+Garcimarrero+Alvaro+Obregon+01510+Ciudad+de+Mexico" target="_blank" rel="noopener">Ver en el mapa</a>
+        </div>
+        <div class="via"><span>Teléfono</span><b id="telefono-texto">Por definir</b></div>
+        <div class="via" id="via-correo" hidden><span>Correo</span><b id="correo-texto"></b></div>
+      </div>
     </div>
     <form id="form-cotizacion" novalidate>
       <div class="campo"><label for="nombre">Nombre</label><input id="nombre" name="nombre" autocomplete="name" required></div>
@@ -492,23 +459,24 @@ textarea { min-height: 8rem; resize: vertical; }
         <label for="servicio">Servicio</label>
         <select id="servicio" name="servicio">
           <option>Diseño de molde</option>
-          <option>Fabricación de molde</option>
-          <option>Mantenimiento o reparación</option>
-          <option>Asesoría / análisis de fallas</option>
+          <option>Diseño de troquel</option>
+          <option>Manufactura CNC (torneado / maquinado)</option>
+          <option>Grabado / electroerosión</option>
+          <option>Pieza especial</option>
           <option>Otro</option>
         </select>
       </div>
-      <div class="campo ancho"><label for="detalle">Descripción</label><textarea id="detalle" name="detalle" placeholder="Material, tamaño aproximado de la pieza, volumen anual, problema que presenta el molde…" required></textarea></div>
+      <div class="campo ancho"><label for="detalle">Descripción</label><textarea id="detalle" name="detalle" placeholder="Material, medidas aproximadas, cantidad de piezas, proceso (inyección, soplado, troquelado…)" required></textarea></div>
       <div class="form-pie">
         <button class="boton" type="submit">Preparar solicitud</button>
         <p class="aviso" id="aviso" role="status"></p>
       </div>
       <div class="resumen" id="resumen" hidden>
-        <p>Tu solicitud está lista. Envíala por correo o cópiala para mandarla por WhatsApp.</p>
+        <p>Tu solicitud está lista. Cópiala para mandarla por WhatsApp o correo.</p>
         <pre id="resumen-texto"></pre>
         <div class="acciones" style="margin-top:0">
-          <a class="boton" id="enviar-correo" href="#">Abrir en mi correo</a>
-          <button class="boton contorno" type="button" id="copiar">Copiar texto</button>
+          <button class="boton" type="button" id="copiar">Copiar texto</button>
+          <a class="boton contorno" id="enviar-correo" href="#" hidden>Abrir en mi correo</a>
         </div>
       </div>
     </form>
@@ -518,21 +486,24 @@ textarea { min-height: 8rem; resize: vertical; }
 
 <footer class="pie">
   <div class="envoltura">
-    <a class="marca" href="#inicio"><span>Ingeniería y Diseño</span></a>
-    <p>Diseño, fabricación y mantenimiento de moldes de inyección. © <span id="anio">2026</span></p>
+    <a class="marca" href="#inicio"><svg aria-hidden="true"><use href="#logo"/></svg><span>Ingeniería y Diseño</span></a>
+    <p>Diseño y manufactura de moldes, troqueles y piezas especiales. © <span id="anio">2026</span></p>
   </div>
 </footer>
 
 <script>
-// Datos de contacto: cámbialos aquí y se actualizan en toda la página.
+// Datos de contacto: llénalos aquí y se actualizan en toda la página.
 const CONTACTO = {
-  correo: 'contacto@ingenieriaydiseno.mx',
-  telefono: '' // p. ej. '+52 222 123 4567'
+  correo: '',   // p. ej. 'ventas@tudominio.mx'
+  telefono: ''  // p. ej. '55 1234 5678'
 };
 
 document.getElementById('anio').textContent = new Date().getFullYear();
-document.getElementById('correo-texto').textContent = CONTACTO.correo;
 if (CONTACTO.telefono) document.getElementById('telefono-texto').textContent = CONTACTO.telefono;
+if (CONTACTO.correo) {
+  document.getElementById('correo-texto').textContent = CONTACTO.correo;
+  document.getElementById('via-correo').hidden = false;
+}
 
 // Menú móvil
 const menuBtn = document.getElementById('menu-btn');
@@ -546,11 +517,12 @@ nav.addEventListener('click', e => {
   if (e.target.closest('a')) { nav.classList.remove('abierta'); menuBtn.setAttribute('aria-expanded', 'false'); }
 });
 
-// Formulario: arma el mensaje para enviarlo por correo o copiarlo
+// Formulario: arma el mensaje para copiarlo o enviarlo por correo
 const form = document.getElementById('form-cotizacion');
 const aviso = document.getElementById('aviso');
 const resumen = document.getElementById('resumen');
 const resumenTexto = document.getElementById('resumen-texto');
+const enviarCorreo = document.getElementById('enviar-correo');
 form.addEventListener('submit', e => {
   e.preventDefault();
   const d = Object.fromEntries(new FormData(form));
@@ -567,8 +539,10 @@ Correo: ${d.correo}${d.telefono ? '\nTeléfono: ' + d.telefono : ''}
 
 ${d.detalle}`;
   resumenTexto.textContent = texto;
-  document.getElementById('enviar-correo').href =
-    'mailto:' + CONTACTO.correo + '?subject=' + encodeURIComponent('Cotización: ' + d.servicio) + '&body=' + encodeURIComponent(texto);
+  if (CONTACTO.correo) {
+    enviarCorreo.href = 'mailto:' + CONTACTO.correo + '?subject=' + encodeURIComponent('Cotización: ' + d.servicio) + '&body=' + encodeURIComponent(texto);
+    enviarCorreo.hidden = false;
+  }
   resumen.hidden = false;
 });
 document.getElementById('copiar').addEventListener('click', () => {
