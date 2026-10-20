@@ -149,6 +149,17 @@ p { margin: 0; }
   .galeria figcaption { font-size: .68rem; letter-spacing: .03em; }
 }
 
+.filtros { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem; }
+.filtro { font: 500 .85rem var(--cuerpo); padding: .55rem .95rem; border-radius: 2px; border: 1px solid var(--linea); background: var(--lamina); color: var(--texto); cursor: pointer; }
+.filtro[aria-pressed="true"] { background: var(--marino); border-color: var(--marino); color: var(--sobre-marino); }
+.ampliar { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.visor { border: 0; padding: 0; background: transparent; max-width: min(92vw, 60rem); max-height: 92vh; color: #eaedf7; }
+.visor::backdrop { background: rgba(5, 9, 25, .88); }
+.visor img { display: block; max-width: 100%; max-height: 80vh; margin-inline: auto; }
+.visor p { font: 400 .85rem var(--mono); text-align: center; margin-top: .75rem; }
+.visor form { text-align: right; }
+.cerrar { font-size: 2rem; line-height: 1; background: none; border: 0; color: inherit; cursor: pointer; padding: .25rem .5rem; }
+
 /* Proceso */
 .proceso { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; counter-reset: paso; }
 .paso { counter-increment: paso; padding: 1.25rem 1.25rem 0 0; border-top: 2px solid var(--linea); position: relative; min-width: 0; }
@@ -354,58 +365,110 @@ textarea { min-height: 8rem; resize: vertical; }
     <div class="seccion-cabeza">
       <p class="etiqueta">Nuestro trabajo</p>
       <h2>Del diseño en pantalla al acero</h2>
-      <p>Moldes, insertos, electrodos y piezas especiales hechos en nuestro taller.</p>
+      <p>Moldes, insertos, electrodos y piezas especiales hechos en nuestro taller. Toca una foto para verla en grande.</p>
     </div>
-    <div class="galeria">
-      <figure>
-        <img src="img/diseno-cad.jpg" alt="Modelo 3D explosionado de un molde de inyección con placas, guías y corazones" width="1004" height="708" loading="lazy">
+    <div class="filtros" role="group" aria-label="Filtrar trabajos">
+      <button type="button" class="filtro" data-filtro="todo" aria-pressed="true">Todo</button>
+      <button type="button" class="filtro" data-filtro="moldes" aria-pressed="false">Moldes</button>
+      <button type="button" class="filtro" data-filtro="torneado" aria-pressed="false">Torneado y piezas</button>
+      <button type="button" class="filtro" data-filtro="electro" aria-pressed="false">Electroerosión y grabado</button>
+      <button type="button" class="filtro" data-filtro="diseno" aria-pressed="false">Diseño</button>
+    </div>
+    <div class="galeria" id="galeria">
+      <figure data-cat="moldes">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Molde con la pieza moldeada"><img src="img/molde-pieza.jpg" alt="Molde abierto con la pieza de metal en la cavidad y la pieza de plástico terminada a un lado" width="1100" height="1119" loading="lazy"></button>
+        <figcaption>Molde con la pieza moldeada</figcaption>
+      </figure>
+      <figure data-cat="diseno">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Diseño 3D de un molde de inyección"><img src="img/diseno-cad.jpg" alt="Modelo 3D explosionado de un molde de inyección con placas, guías y corazones" width="1004" height="708" loading="lazy"></button>
         <figcaption>Diseño 3D de un molde de inyección</figcaption>
       </figure>
-      <figure>
-        <img src="img/molde-inyeccion.jpg" alt="Molde de inyección abierto mostrando la cavidad, el corazón y las guías" width="1100" height="1456" loading="lazy">
+      <figure data-cat="moldes">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Molde de inyección terminado"><img src="img/molde-inyeccion.jpg" alt="Molde de inyección abierto mostrando la cavidad, el corazón y las guías" width="1100" height="1456" loading="lazy"></button>
         <figcaption>Molde de inyección terminado</figcaption>
       </figure>
-      <figure>
-        <img src="img/molde-soplado-2.jpg" alt="Molde de soplado abierto con dos cavidades en forma de botella" width="1100" height="1456" loading="lazy">
+      <figure data-cat="torneado">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Componentes pulidos a espejo"><img src="img/componentes-pulidos.jpg" alt="Charola con decenas de componentes torneados y pulidos a espejo" width="1100" height="1945" loading="lazy"></button>
+        <figcaption>Componentes pulidos a espejo</figcaption>
+      </figure>
+      <figure data-cat="electro">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Pieza, electrodos y cavidad del molde"><img src="img/pieza-electrodos.jpg" alt="Pieza de plástico, dos electrodos de cobre y las dos mitades de la cavidad del molde" width="1100" height="868" loading="lazy"></button>
+        <figcaption>Pieza, electrodos y cavidad del molde</figcaption>
+      </figure>
+      <figure data-cat="torneado">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Roscado en el centro de torneado"><img src="img/roscado-torno.jpg" alt="Flecha siendo roscada dentro del centro de torneado, con la torreta de herramientas al fondo" width="1100" height="1456" loading="lazy"></button>
+        <figcaption>Roscado en el centro de torneado</figcaption>
+      </figure>
+      <figure data-cat="moldes">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Molde de soplado de 2 cavidades"><img src="img/molde-soplado-2.jpg" alt="Molde de soplado abierto con dos cavidades en forma de botella" width="1100" height="1456" loading="lazy"></button>
         <figcaption>Molde de soplado de 2 cavidades</figcaption>
       </figure>
-      <figure>
-        <img src="img/molde-engrane.jpg" alt="Placas de molde con cavidad en forma de engrane al centro" width="1100" height="1456" loading="lazy">
+      <figure data-cat="diseno">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Plano de placa en CAD"><img src="img/plano-cad.jpg" alt="Plano 2D de una placa con cotas de 151 por 100 mm en la pantalla de la computadora" width="1100" height="762" loading="lazy"></button>
+        <figcaption>Plano de placa en CAD</figcaption>
+      </figure>
+      <figure data-cat="torneado">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Corazones pulidos con pernos"><img src="img/corazones-pernos.jpg" alt="Corazones torneados y pulidos con pernos en la punta" width="1100" height="1456" loading="lazy"></button>
+        <figcaption>Corazones pulidos con pernos</figcaption>
+      </figure>
+      <figure data-cat="moldes">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Molde para pieza tipo engrane"><img src="img/molde-engrane.jpg" alt="Placas de molde con cavidad en forma de engrane al centro" width="1100" height="1456" loading="lazy"></button>
         <figcaption>Molde para pieza tipo engrane</figcaption>
       </figure>
-      <figure>
-        <img src="img/molde-4-cavidades.jpg" alt="Placa de molde de cuatro cavidades con logotipo grabado en cada cavidad y canales de alimentación en cruz" width="1004" height="848" loading="lazy">
-        <figcaption>Placa de molde de 4 cavidades con grabado</figcaption>
-      </figure>
-      <figure>
-        <img src="img/placas-molde.jpg" alt="Juegos de placas de molde maquinadas sobre el banco de trabajo" width="1100" height="1456" loading="lazy">
-        <figcaption>Placas de molde maquinadas</figcaption>
-      </figure>
-      <figure>
-        <img src="img/electrodo-cobre.jpg" alt="Electrodo de cobre ranurado junto a la placa de acero que va a erosionar, con sus medidas marcadas" width="1100" height="1456" loading="lazy">
+      <figure data-cat="electro">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Electrodo de cobre para electroerosión"><img src="img/electrodo-cobre.jpg" alt="Electrodo de cobre ranurado junto a la placa de acero que va a erosionar, con sus medidas marcadas" width="1100" height="1456" loading="lazy"></button>
         <figcaption>Electrodo de cobre para electroerosión</figcaption>
       </figure>
-      <figure>
-        <img src="img/electroerosion-trabajando.jpg" alt="Electrodo de electroerosión sobre un inserto de molde sumergido en dieléctrico" width="1004" height="1339" loading="lazy">
+      <figure data-cat="torneado">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Anillos roscados"><img src="img/anillos-roscados.jpg" alt="Tres anillos torneados con rosca interior y barrenos" width="1100" height="1456" loading="lazy"></button>
+        <figcaption>Anillos roscados</figcaption>
+      </figure>
+      <figure data-cat="moldes">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Placa de molde de 4 cavidades con grabado"><img src="img/molde-4-cavidades.jpg" alt="Placa de molde de cuatro cavidades con logotipo grabado en cada cavidad y canales de alimentación en cruz" width="1004" height="848" loading="lazy"></button>
+        <figcaption>Placa de molde de 4 cavidades con grabado</figcaption>
+      </figure>
+      <figure data-cat="electro">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Electroerosión por penetración en un inserto"><img src="img/electroerosion-trabajando.jpg" alt="Electrodo de electroerosión sobre un inserto de molde sumergido en dieléctrico" width="1004" height="1339" loading="lazy"></button>
         <figcaption>Electroerosión por penetración en un inserto</figcaption>
       </figure>
-      <figure>
-        <img src="img/insertos-grabados.jpg" alt="Ocho insertos circulares con el mismo grabado, acomodados en una charola" width="1100" height="1456" loading="lazy">
+      <figure data-cat="torneado">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Detalle del pulido espejo"><img src="img/pulido-detalle.jpg" alt="Acercamiento a componentes cónicos pulidos a espejo" width="1100" height="1945" loading="lazy"></button>
+        <figcaption>Detalle del pulido espejo</figcaption>
+      </figure>
+      <figure data-cat="moldes">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Placas de molde maquinadas"><img src="img/placas-molde.jpg" alt="Juegos de placas de molde maquinadas sobre el banco de trabajo" width="1100" height="1456" loading="lazy"></button>
+        <figcaption>Placas de molde maquinadas</figcaption>
+      </figure>
+      <figure data-cat="electro">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Lote de insertos grabados"><img src="img/insertos-grabados.jpg" alt="Ocho insertos circulares con el mismo grabado, acomodados en una charola" width="1100" height="1456" loading="lazy"></button>
         <figcaption>Lote de insertos grabados</figcaption>
       </figure>
-      <figure>
-        <img src="img/inserto-detalle.jpg" alt="Acercamiento a un inserto torneado con grabado de flechas y tapa" width="1100" height="1456" loading="lazy">
+      <figure data-cat="torneado">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Juego de corazones y anillos"><img src="img/corazones-anillos.jpg" alt="Dos corazones escalonados y dos anillos torneados sobre el banco" width="1100" height="1945" loading="lazy"></button>
+        <figcaption>Juego de corazones y anillos</figcaption>
+      </figure>
+      <figure data-cat="torneado">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Piezas especiales con brida"><img src="img/piezas-brida.jpg" alt="Cinco piezas torneadas con brida y barrenos sobre el banco de trabajo" width="1100" height="816" loading="lazy"></button>
+        <figcaption>Piezas especiales con brida</figcaption>
+      </figure>
+      <figure data-cat="electro">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Detalle del grabado en un inserto"><img src="img/inserto-detalle.jpg" alt="Acercamiento a un inserto torneado con grabado de flechas y tapa" width="1100" height="1456" loading="lazy"></button>
         <figcaption>Detalle del grabado en un inserto</figcaption>
       </figure>
-      <figure>
-        <img src="img/piezas-brida.jpg" alt="Cinco piezas torneadas con brida y barrenos sobre el banco de trabajo" width="1100" height="816" loading="lazy">
-        <figcaption>Piezas especiales torneadas con brida</figcaption>
+      <figure data-cat="torneado">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Producción en serie de piezas torneadas"><img src="img/piezas-serie.jpg" alt="Charola con más de veinte piezas torneadas iguales" width="1100" height="1945" loading="lazy"></button>
+        <figcaption>Producción en serie de piezas torneadas</figcaption>
       </figure>
-      <figure>
-        <img src="img/piezas-torneadas.jpg" alt="Seis piezas torneadas escalonadas y pulidas sobre un escritorio" width="1100" height="816" loading="lazy">
+      <figure data-cat="torneado">
+        <button type="button" class="ampliar" aria-label="Ver en grande: Piezas torneadas y pulidas"><img src="img/piezas-torneadas.jpg" alt="Seis piezas torneadas escalonadas y pulidas sobre un escritorio" width="1100" height="816" loading="lazy"></button>
         <figcaption>Piezas torneadas y pulidas</figcaption>
       </figure>
     </div>
+    <dialog class="visor" id="visor" aria-label="Foto ampliada">
+      <form method="dialog"><button class="cerrar" aria-label="Cerrar">×</button></form>
+      <img id="visor-img" src="" alt="">
+      <p id="visor-pie"></p>
+    </dialog>
   </div>
 </section>
 
@@ -593,6 +656,23 @@ document.getElementById('copiar').addEventListener('click', () => {
       btn.textContent = 'Texto seleccionado';
     });
 });
+
+// Galería: filtros y foto ampliada
+const figuras = document.querySelectorAll('#galeria figure');
+document.querySelectorAll('.filtro').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.filtro').forEach(b => b.setAttribute('aria-pressed', b === btn));
+  const f = btn.dataset.filtro;
+  figuras.forEach(fig => { fig.hidden = f !== 'todo' && fig.dataset.cat !== f; });
+}));
+const visor = document.getElementById('visor');
+document.querySelectorAll('.ampliar').forEach(btn => btn.addEventListener('click', () => {
+  const img = btn.querySelector('img');
+  document.getElementById('visor-img').src = img.src;
+  document.getElementById('visor-img').alt = img.alt;
+  document.getElementById('visor-pie').textContent = btn.nextElementSibling.textContent;
+  if (visor.showModal) visor.showModal();
+}));
+visor.addEventListener('click', e => { if (e.target === visor) visor.close(); });
 </script>
 </body>
 </html>
